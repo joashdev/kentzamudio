@@ -3,6 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* h1{
-  @apply font-logo font-black text-3xl text-slate-800 dark:text-white
-} */

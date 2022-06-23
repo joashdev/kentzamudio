@@ -9,7 +9,10 @@ const { isDark, toggleTheme } = userTheme();
     :class="{ 'border-white bg-slate-800': isDark }"
     @click="toggleTheme"
   >
-    <div class="h-6 w-6 rounded-full" :class="{ 'translate-x-6': isDark }">
+    <div
+      class="h-6 w-6 rounded-full transition-transform duration-500"
+      :class="{ 'translate-x-6': isDark }"
+    >
       <span v-if="!isDark">
         <svg
           xmlns="http://www.w3.org/2000/svg"

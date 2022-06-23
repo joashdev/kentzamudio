@@ -8,8 +8,8 @@ import Building from './components/Building.vue';
   <Building />
 </template>
 
-<style deep>
+<style deep lang="postcss">
 * {
-  @apply transition-all duration-500;
+  @apply transition-colors duration-500;
 }
 </style>
