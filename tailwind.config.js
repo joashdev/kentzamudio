@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'logo': ['Archivo']
+        'sans': ['Inter', ...defaultTheme.fontFamily.sans],
+        'anurati': ['Anurati'],
+        'blanka': ['Blanka']
       },
     },
   },

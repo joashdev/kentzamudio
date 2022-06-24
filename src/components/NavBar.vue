@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import DarkToggle from './DarkToggle.vue';
+// import DarkToggle from './DarkToggle.vue';
 const sidebar = ref(false);
 const toggleSidebar = () => {
   sidebar.value = !sidebar.value;
@@ -9,19 +9,18 @@ const toggleSidebar = () => {
 
 <template>
   <nav
-    class="fixed grid h-14 w-screen grid-cols-3 justify-between border-b-2 border-slate-400 bg-white bg-opacity-10 p-2 shadow-lg shadow-slate-400 dark:border-slate-900 dark:bg-slate-800 dark:bg-opacity-10 dark:shadow-slate-900"
+    class="fixed h-14 w-full bg-transparent p-2 z-50"
+    v-motion-fade-in
   >
-    <h1 class="font-logo text-3xl font-black text-slate-800 dark:text-white">
-      KJZ.
-    </h1>
+  
     <div
-      class="col-start-3 hidden grid-flow-row place-items-center md:grid md:grid-flow-col"
+      class="hidden h-full grid-flow-row place-items-center md:grid md:grid-flow-col"
     >
-      <a class="active">HOME</a>
-      <a>PROJECTS</a>
-      <a>ABOUT</a>
-      <a>CONTACT</a>
-      <DarkToggle />
+      <a href='#home'>Home</a>
+      <a href='#projects'>Projects</a>
+      <a>About</a>
+      <a>Contact</a>
+      <!-- <DarkToggle /> -->
       <div
         class="flex-column flex items-center justify-between space-x-4 md:hidden"
         :class="{ 'is-active': sidebar.value }"
@@ -47,10 +46,11 @@ const toggleSidebar = () => {
 </template>
 
 <style scoped lang="postcss">
+/* * {
+  @apply outline outline-1 outline-white
+} */
 a {
-  @apply font-logo text-lg font-light text-slate-800 dark:text-white;
+  @apply text-base font-light text-white;
 }
-.active {
-  @apply !text-blue-600;
-}
+
 </style>
