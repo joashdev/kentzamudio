@@ -1,23 +1,33 @@
 <script setup>
-import { ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { onMounted, onUnmounted, ref } from 'vue';
+onUnmounted(() => {
+  ScrollTrigger.getAll().forEach((t) => t.kill());
+});
 // import DarkToggle from './DarkToggle.vue';
 const sidebar = ref(false);
 const toggleSidebar = () => {
   sidebar.value = !sidebar.value;
 };
+
+onMounted(() => {
+  gsap
+    .timeline({ defaults: { ease: 'power1.out', opacity: 0 } })
+    .from('nav>div>a', { y: -20, stagger: 0.3, delay: 2 });
+});
 </script>
 
 <template>
   <nav
-    class="fixed h-14 w-full bg-transparent p-2 z-50"
-    v-motion-fade-in
+    class="fixed z-50 h-14 w-full bg-transparent p-2"
   >
-  
     <div
       class="hidden h-full grid-flow-row place-items-center md:grid md:grid-flow-col"
     >
-      <a href='#home'>Home</a>
-      <a href='#projects'>Projects</a>
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
       <a>About</a>
       <a>Contact</a>
       <!-- <DarkToggle /> -->
@@ -52,5 +62,4 @@ const toggleSidebar = () => {
 a {
   @apply text-base font-light text-white;
 }
-
 </style>
