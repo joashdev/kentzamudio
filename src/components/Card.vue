@@ -1,49 +1,22 @@
 <script setup>
 import { inject, ref } from 'vue';
 const projects = inject('projects');
+const { updateIndex } = inject('gallery');
 </script>
 
 <template>
   <div
-    class="
-      project_card
-      group
-      col-span-1
-      flex
-      h-full
-      w-full
-      flex-col
-      rounded-xl
-      bg-black
-    "
+    class="project_card group col-span-1 flex h-full w-full flex-col rounded-xl bg-black"
     v-for="(project, index) in projects"
     :key="index"
   >
     <img
-      class="
-        w-full
-        grayscale
-        transition-all
-        duration-300
-        ease-in
-        group-hover:grayscale-0
-      "
+      class="w-full grayscale transition-all duration-300 ease-in group-hover:grayscale-0"
       :src="project.img"
       alt=""
     />
     <div
-      class="
-        flex
-        h-full
-        w-full
-        flex-col
-        justify-between
-        bg-neutral-900 bg-opacity-30
-        px-5
-        pt-3
-        pb-5
-        transition-all
-      "
+      class="flex h-full w-full flex-col justify-between bg-neutral-900 bg-opacity-30 px-5 pt-3 pb-5 transition-all group-hover:bg-opacity-60"
     >
       <div>
         <h1 class="text-2xl font-semibold">{{ project.name }}</h1>
@@ -57,21 +30,8 @@ const projects = inject('projects');
       </div>
       <div class="mt-4 flex h-8 w-full flex-row items-center justify-between">
         <button
-          class="
-            my-1
-            mx-1
-            flex
-            h-full
-            w-1/3
-            items-center
-            justify-center
-            bg-neutral-900 bg-opacity-50
-            text-center
-            transition-all
-            duration-200
-            ease-in
-            hover:scale-105 hover:bg-opacity-80 hover:font-semibold
-          "
+          class="my-1 mx-1 flex h-full w-1/3 items-center justify-center bg-neutral-900 bg-opacity-50 text-center transition-all duration-200 ease-in hover:scale-105 hover:bg-opacity-80 hover:font-semibold"
+          @click="updateIndex(index)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,21 +46,7 @@ const projects = inject('projects');
         </button>
         <a
           v-if="project.url"
-          class="
-            my-1
-            mx-1
-            flex
-            h-full
-            w-1/3
-            items-center
-            justify-center
-            bg-neutral-900 bg-opacity-50
-            text-center
-            transition-all
-            duration-200
-            ease-in
-            hover:scale-105 hover:bg-opacity-80 hover:font-semibold
-          "
+          class="my-1 mx-1 flex h-full w-1/3 items-center justify-center bg-neutral-900 bg-opacity-50 text-center transition-all duration-200 ease-in hover:scale-105 hover:bg-opacity-80 hover:font-semibold"
           :title="`Visit ${project.url}`"
           :href="project.url"
           target="_blank"
@@ -114,28 +60,12 @@ const projects = inject('projects');
               d="M384 320c-17.67 0-32 14.33-32 32v96H64V160h96c17.67 0 32-14.32 32-32s-14.33-32-32-32L64 96c-35.35 0-64 28.65-64 64V448c0 35.34 28.65 64 64 64h288c35.35 0 64-28.66 64-64v-96C416 334.3 401.7 320 384 320zM488 0H352c-12.94 0-24.62 7.797-29.56 19.75c-4.969 11.97-2.219 25.72 6.938 34.88L370.8 96L169.4 297.4c-12.5 12.5-12.5 32.75 0 45.25C175.6 348.9 183.8 352 192 352s16.38-3.125 22.62-9.375L416 141.3l41.38 41.38c9.156 9.141 22.88 11.84 34.88 6.938C504.2 184.6 512 172.9 512 160V24C512 10.74 501.3 0 488 0z"
             />
           </svg>
-          Site
+          Live
         </a>
-        <a
+        <div
           v-if="!project.url"
-          class="
-            my-1
-            mx-1
-            flex
-            h-full
-            w-1/3
-            cursor-not-allowed
-            items-center
-            justify-center
-            bg-neutral-900 bg-opacity-10
-            text-center text-neutral-900
-            transition-all
-            duration-200
-            ease-in
-          "
+          class="my-1 mx-1 flex h-full w-1/3 cursor-not-allowed items-center justify-center bg-neutral-900 bg-opacity-10 text-center text-neutral-900 transition-all duration-200 ease-in"
           title="Site Not Available"
-          :href="project.url"
-          target="_blank"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -146,24 +76,10 @@ const projects = inject('projects');
               d="M384 320c-17.67 0-32 14.33-32 32v96H64V160h96c17.67 0 32-14.32 32-32s-14.33-32-32-32L64 96c-35.35 0-64 28.65-64 64V448c0 35.34 28.65 64 64 64h288c35.35 0 64-28.66 64-64v-96C416 334.3 401.7 320 384 320zM488 0H352c-12.94 0-24.62 7.797-29.56 19.75c-4.969 11.97-2.219 25.72 6.938 34.88L370.8 96L169.4 297.4c-12.5 12.5-12.5 32.75 0 45.25C175.6 348.9 183.8 352 192 352s16.38-3.125 22.62-9.375L416 141.3l41.38 41.38c9.156 9.141 22.88 11.84 34.88 6.938C504.2 184.6 512 172.9 512 160V24C512 10.74 501.3 0 488 0z"
             />
           </svg>
-          Site
-        </a>
+          Live
+        </div>
         <a
-          class="
-            my-1
-            mx-1
-            flex
-            h-full
-            w-1/3
-            items-center
-            justify-center
-            bg-neutral-900 bg-opacity-50
-            text-center
-            transition-all
-            duration-200
-            ease-in
-            hover:scale-105 hover:bg-opacity-80 hover:font-semibold
-          "
+          class="my-1 mx-1 flex h-full w-1/3 items-center justify-center bg-neutral-900 bg-opacity-50 text-center transition-all duration-200 ease-in hover:scale-105 hover:bg-opacity-80 hover:font-semibold"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

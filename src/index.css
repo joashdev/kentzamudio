@@ -19,7 +19,14 @@ html {
 body {
   margin: 0;
   padding: 0;
+  width: 100vw !important;
+  /* overflow-x: hidden !important; */
   overflow-x: hidden;
+}
+
+.modal-open{
+  height: 100vh !important;
+  overflow: hidden !important;
 }
 @tailwind base;
 @tailwind components;

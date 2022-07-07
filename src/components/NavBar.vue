@@ -21,37 +21,18 @@ onMounted(() => {
 
 <template>
   <nav
-    class="fixed z-50 h-14 w-full bg-transparent p-2"
+    class="fixed z-40 h-14 w-screen bg-transparent p-2 overflow-hidden"
   >
     <div
-      class="hidden h-full grid-flow-row place-items-center md:grid md:grid-flow-col"
+      class="h-full w-full items-center justify-evenly flex flex-row"
     >
       <a href="#home">Home</a>
       <a href="#projects">Projects</a>
-      <a>About</a>
-      <a>Contact</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
       <!-- <DarkToggle /> -->
-      <div
-        class="flex-column flex items-center justify-between space-x-4 md:hidden"
-        :class="{ 'is-active': sidebar.value }"
-        @click="toggleSidebar"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8 dark:stroke-white"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </div>
     </div>
+      
   </nav>
 </template>
 

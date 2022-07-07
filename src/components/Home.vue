@@ -12,8 +12,8 @@ onMounted(() => {
         defaults: { opacity: 0, ease: 'power1.out' },
       })
       .from('.fade_in', { duration: 1.5 }, '<')
-      .from('.slide_from_left', { x: -200, duration: 0.5 }, '<1')
-      .from('.slide_from_right', { x: 200, duration: 0.5 }, '-=100%');
+      .from('.slide_from_left', { x: -100, duration: 0.5 }, '<1')
+      .from('.slide_from_right', { x: 100, duration: 5 }, '-=100%');
 
   ScrollTrigger.create({
     animation: slideFromLeft(),
@@ -30,44 +30,54 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="home" class="min-h-screen">
+  <section id="home" class="h-screen w-screen relative">
     <div
-      class="fade_in absolute z-10 h-full w-full overflow-y-hidden opacity-100"
+      class="fade_in absolute overflow-hidden z-10 h-screen w-screen  opacity-100"
     >
-      <img class="mx-auto w-1/2" src="@/assets/hero_bw1.png" alt="hero" />
+      <img
+        class="-ml-[15%] mt-12 w-[130%] max-w-none md:mx-auto md:w-[100%] lg:w-1/2"
+        src="@/assets/hero_bw1.png"
+        alt="hero"
+      />
     </div>
-    <div class="slide_from_left absolute h-full w-full">
+    <div class="slide_from_left absolute hidden md:block h-screen w-screen overflow-x-hidden">
       <h1
-        class="text-stroke absolute top-0 left-12 z-0 m-0 p-0 font-blanka text-[15rem]"
+        class="text-stroke z-0 float-left ml-6 -mb-12 overflow-x-hidden align-middle font-blanka text-[15rem]"
       >
         KENT
       </h1>
+      <br />
       <h1
-        class="text-stroke absolute bottom-0 right-12 z-0 m-0 overflow-hidden p-0 font-blanka text-[15rem]"
+        class="text-stroke z-0 float-right mr-6 -mt-12 overflow-x-hidden p-0 align-middle font-blanka text-[15rem]"
       >
         ZAMUDIO
       </h1>
     </div>
     <div
-      class="slide_from_right absolute z-20 flex h-full w-full flex-col items-end justify-end"
+      class="slide_from_right absolute z-20 h-screen w-screen overflow-x-hidden"
     >
-      <h1 class="mb-0 pr-5 text-right font-light text-white">
-        web developer / programmer
-      </h1>
-      <h1 class="mb-5 pr-5 text-right text-8xl font-black text-neutral-50">
-        KENT<br />
-        JOASH<br />ZAMUDIO
-      </h1>
+      <div class="flex flex-col w-full h-full justify-end md:items-end md:pb-0 pb-12 overflow-x-hidden">
+        <h1
+          class="order-last md:order-1 text-right font-light text-white md:m-0 pr-5"
+        >
+          web developer / programmer
+        </h1>
+        <h1
+          class="md:mb-12  pr-5 text-right text-4xl font-black text-neutral-50 lg:mb-0 lg:text-8xl"
+        >
+          KENT<br />
+          JOASH<br />ZAMUDIO
+        </h1>
+      </div>
     </div>
   </section>
 </template>
 
 <style lang="postcss" scoped>
-/* * {
-  @apply;
-} */
+* {
+  @apply outline-red-500 outline-2 outline;
+}
 h1 {
   @apply select-none;
 }
-
 </style>

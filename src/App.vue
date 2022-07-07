@@ -5,15 +5,17 @@ import Home from './components/Home.vue';
 import Project from './components/Project.vue';
 
 import gsap from 'gsap';
+import About from './components/About.vue';
 
 // gsap.timeline().from('body', { opacity: 0, ease: 'power1.out', duration: 1 })
 </script>
 
 <template>
   <main class="min-h-screen bg-black">
-    <NavBar />
+    <!-- <NavBar /> -->
     <Home />
-    <Project/>
+    <!-- <Project/> -->
+    <!-- <About/> -->
   </main>
 </template>
 

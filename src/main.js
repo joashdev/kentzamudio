@@ -1,14 +1,17 @@
 import { createApp } from 'vue';
 import gsap from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // import { MotionPlugin, useMotionVariants } from '@vueuse/motion';
-import {projects, skills} from '@/store/store'
+import { projects, galleryIndex, updateIndex, skills } from '@/store/store';
 import App from './App.vue';
 import './index.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-createApp(App).provide('projects', projects).provide('skills', skills)
+createApp(App)
+  .provide('projects', projects)
+  .provide('gallery', { galleryIndex, updateIndex })
+  .provide('skills', skills)
   // .use(MotionPlugin, {
   //   directives: {
   //     'slide-from-left': {

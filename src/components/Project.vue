@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { onUnmounted, onMounted, inject } from 'vue';
 import Card from './Card.vue';
+import GalleryModal from './GalleryModal.vue'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +34,7 @@ onMounted(() => {
     // markers: true,
     scrub: 0.5,
   });
-  
+
   // cards and navbar animation
   ScrollTrigger.create({
     animation: gsap
@@ -54,10 +55,10 @@ onMounted(() => {
         '-=100%'
       ),
     trigger: '#projects',
-    start: '40% 80%',
-    end: '60% 20%',
-    // start: 'top center',
-    // end: 'bottom center',
+    // start: '40% 80%',
+    // end: '60% 20%',
+    start: 'top center',
+    end: 'bottom center',
     toggleActions: 'play reverse restart reverse',
     // markers: true,
     // scrub: .5
@@ -69,24 +70,25 @@ onUnmounted(() => {
 </script>
 <template>
   <section id="projects" class="min-h-screen">
-    <div class="projects_header absolute z-0 -mb-64 h-full w-full">
+    <div
+      class="projects_header absolute z-0 -mb-64 h-full w-screen overflow-x-hidden"
+    >
       <h1
-        class="
-          h-full
-          w-full
-          text-[20rem]
-          font-black
-          text-neutral-400 text-opacity-10
-        "
+        class="h-full w-full text-[20rem] font-black text-neutral-400 text-opacity-10"
       >
         <span class="projects_header_left float-left -ml-60">PROJECTS</span>
         <br />
         <span class="projects_header_right float-right -mr-60">PROJECTS</span>
       </h1>
     </div>
-    <div class="grid auto-rows-max grid-cols-3 gap-6 px-14 pb-14 pt-20">
+    <div
+      class="grid auto-rows-max grid-cols-1 gap-6 px-7 md:px-14 pb-14 pt-20 md:grid-cols-2 lg:grid-cols-3"
+    >
       <Card />
     </div>
+    <Teleport to="body">
+      <GalleryModal />
+    </Teleport>
   </section>
 </template>
 
